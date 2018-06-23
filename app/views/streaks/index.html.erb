@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Streaks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Current streak</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @streaks.each do |streak| %>
+      <tr>
+        <td><%= streak.current_streak %></td>
+        <td><%= streak.start_date %></td>
+        <td><%= streak.end_date %></td>
+        <td><%= link_to 'Show', streak %></td>
+        <td><%= link_to 'Edit', edit_streak_path(streak) %></td>
+        <td><%= link_to 'Destroy', streak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Streak', new_streak_path %>

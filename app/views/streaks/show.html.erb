@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Current streak:</strong>
+  <%= @streak.current_streak %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @streak.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @streak.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_streak_path(@streak) %> |
+<%= link_to 'Back', streaks_path %>
