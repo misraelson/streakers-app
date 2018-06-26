@@ -10,5 +10,6 @@
   <%= @activity.status %>
 </p>
 
+<%= link_to 'Start A Streak', new_activity_streak_path(@activity) %>
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>
