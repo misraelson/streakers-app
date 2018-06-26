@@ -5,6 +5,7 @@ class StreaksController < ApplicationController
   # GET /streaks.json
   def index
     @streaks = Streak.all
+    @activity = Activity.find(params[:activity_id])
   end
 
   # GET /streaks/1
@@ -24,7 +25,9 @@ class StreaksController < ApplicationController
   # POST /streaks
   # POST /streaks.json
   def create
+    activity = Activity.find(params.id)
     @streak = Streak.new(streak_params)
+    @streak.activity_id = activity.id
 
     respond_to do |format|
       if @streak.save

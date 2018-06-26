@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Activity</th>
       <th>Current streak</th>
       <th>Start date</th>
       <th>End date</th>
@@ -15,12 +16,13 @@
   <tbody>
     <% @streaks.each do |streak| %>
       <tr>
+        <td><%= streak.activity.title %></td>
         <td><%= streak.current_streak %></td>
         <td><%= streak.start_date %></td>
         <td><%= streak.end_date %></td>
-        <td><%= link_to 'Show', streak %></td>
-        <td><%= link_to 'Edit', edit_streak_path(streak) %></td>
-        <td><%= link_to 'Destroy', streak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', activity_streak_path(streak.activity, streak) %></td>
+        <td><%= link_to 'Edit', edit_activity_streak_path(streak.activity, streak) %></td>
+        <td><%= link_to 'Destroy', activity_streak_path(streak.activity, streak), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Streak', new_streak_path %>
+<%= link_to 'New Streak', new_activity_streak_path(@activity) %>
