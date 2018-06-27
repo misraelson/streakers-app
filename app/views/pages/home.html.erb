@@ -61,8 +61,6 @@
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="../../../../assets/js/vendor/popper.min.js"></script>
-
   <!-- Icons -->
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
   <script>
@@ -76,16 +74,24 @@
     var myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ["Don't Smoke", "10 Chin Ups", "50 Push Ups", "Take Vitamins", "Floss", "Push to Github"],
+        labels: <%= activity_title_helper %>,
         datasets: [{
-          data: [15, 21, 18, 24, 23, 12],
-          backgroundColor: ['#FFE74C', '#FF5964', '#35A7FF', '#FFFFFF', '#192A51', '#38618C'],
+          data: [15, 21, 18, 10],
+          backgroundColor: ['#FFE74C', '#FF5964', '#35A7FF', '#FFFFFF'],
           borderColor: '#5D4954',
           borderWidth: 4,
           pointBackgroundColor: '#007bff'
         }]
       },
       options: {
+        layout: {
+                  padding: {
+                      left: 20,
+                      right: 20,
+                      top: 20,
+                      bottom: 20
+                  }
+                },
         cutoutPercentage: 20
       }
     });

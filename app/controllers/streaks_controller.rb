@@ -29,6 +29,7 @@ class StreaksController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @streak = Streak.new(streak_params)
     @streak.activity_id = @activity.id
+    @streak.current_streak = 1
 
     respond_to do |format|
       if @streak.save
