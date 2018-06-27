@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities
   def index
-    @activities = Activity.all
+    @activities = current_user.activities.all
   end
 
   # GET /activities/1
@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
     u = current_user
     @activity = Activity.new(activity_params)
     @activity.user_id = u.id
-    
+
     respond_to do |format|
       if @activity.save
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }

@@ -17,14 +17,16 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file"></span>
+
+              <a class="nav-link" href="/activities/:activity_id/streaks">
+                <span data-feather="activity"></span>
                 Streaks
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
+              <%= link_to '', activities_path %>
+              <a class="nav-link" href="/activities">
+                <span data-feather="star"></span>
                 Activities
               </a>
             </li>
@@ -39,8 +41,8 @@
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Start new streak</span>
-            <a class="d-flex align-items-center text-muted" href="#">
+            <span>Add New Activity</span><%= link_to '', new_activity_path %>
+            <a class="d-flex align-items-center text-muted" href="/activities/new">
               <span data-feather="plus-circle"></span>
             </a>
           </h6>

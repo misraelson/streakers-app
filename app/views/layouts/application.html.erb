@@ -14,15 +14,17 @@
   <body>
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
-        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <div class="cover-container d-flex h-100 p-3 flex-column">
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
 
           <% if current_user %>
-       	    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+       	    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-secondary btn-block" %>
+       	    <%= link_to "Home", root_path, class: "btn btn-lg btn-primary btn-block" %>
+            <br>
           <% else  %>
-       	    <%= link_to "Register", new_user_registration_path %>
-       	    <%= link_to "Login", new_user_session_path %>
+       	    <%= link_to "Register", new_user_registration_path, class: "btn btn-lg btn-secondary btn-block" %>
+       	    <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-primary btn-block" %>
           <% end  %>
 
           <%= yield %>

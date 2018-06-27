@@ -12,21 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :current_streak %>
-    <%= form.number_field :current_streak %>
-  </div>
-
-  <div class="field">
     <%= form.label :start_date %>
     <%= form.date_select :start_date %>
   </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Start Streakin", class: "btn btn-lg btn-primary btn-block" %>
   </div>
+  <br>
 <% end %>

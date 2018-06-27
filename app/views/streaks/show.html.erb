@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Activity Title:</strong>
+<h1>
   <%= @streak.activity.title %>
-</p>
+</h1>
 
 <p>
   <strong>Current streak:</strong>
@@ -20,5 +19,5 @@
   <%= @streak.end_date %>
 </p>
 
-<%= link_to 'Edit', edit_activity_streak_path(@streak) %> |
-<%= link_to 'Back', activity_streaks_path %>
+<%= link_to 'Edit', edit_activity_streak_path(@streak), class: "btn btn-lg btn-primary btn-block" %> <br>
+<%= link_to 'Back', activity_streaks_path, class: "btn btn-lg btn-secondary btn-block" %>

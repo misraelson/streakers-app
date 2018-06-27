@@ -1,37 +1,38 @@
 class StreaksController < ApplicationController
   before_action :set_streak, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-  # GET /streaks
-  # GET /streaks.json
+
   def index
-    @streaks = Streak.all
-    @activity = Activity.find(params[:activity_id])
+      @streaks = current_user.streaks.all
+      @activity = Activity.find(params[:activity_id])
+      # @streaks.activity_id = @activity.id
   end
 
-  # GET /streaks/1
-  # GET /streaks/1.json
+  def all_streaks_index
+    @activities = current_user.activities.all
+    @streaks = current_user.streaks.all
+  end
+
   def show
   end
 
-  # GET /streaks/new
   def new
     @streak = Streak.new
   end
 
-  # GET /streaks/1/edit
   def edit
   end
 
   # POST /streaks
-  # POST /streaks.json
   def create
-    activity = Activity.find(params.id)
+    @activity = Activity.find(params[:activity_id])
     @streak = Streak.new(streak_params)
-    @streak.activity_id = activity.id
+    @streak.activity_id = @activity.id
 
     respond_to do |format|
       if @streak.save
-        format.html { redirect_to @streak, notice: 'Streak was successfully created.' }
+        format.html { redirect_to activity_streak_path(@streak.activity, @streak), notice: 'Streak was successfully created.' }
         format.json { render :show, status: :created, location: @streak }
       else
         format.html { render :new }
@@ -41,7 +42,6 @@ class StreaksController < ApplicationController
   end
 
   # PATCH/PUT /streaks/1
-  # PATCH/PUT /streaks/1.json
   def update
     respond_to do |format|
       if @streak.update(streak_params)
@@ -55,11 +55,10 @@ class StreaksController < ApplicationController
   end
 
   # DELETE /streaks/1
-  # DELETE /streaks/1.json
   def destroy
     @streak.destroy
     respond_to do |format|
-      format.html { redirect_to streaks_url, notice: 'Streak was successfully destroyed.' }
+      format.html { redirect_to activity_streaks_path, notice: 'Streak was successfully removed.' }
       format.json { head :no_content }
     end
   end
