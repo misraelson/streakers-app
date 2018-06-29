@@ -14,6 +14,13 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+var color = randomColor({
+  count: 1,
+  luminosity: 'light',
+  hue: 'random',
+  format: 'rgba',
+  alpha: 0.5
+});
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
 type: 'polarArea',
@@ -21,14 +28,17 @@ data: {
   labels: ["<%= raw @streak.activity.title %>"],
   datasets: [{
     data: ["<%= raw @streak.current_streak %>"],
-    backgroundColor: ['#FF5964'],
+    backgroundColor: color,
     borderColor: '#5D4954',
-    borderWidth: 4,
-    pointBackgroundColor: '#007bff'
+    pointBackgroundColor: '#007bff',
+    borderWidth: 0.4
   }]
 },
 options: {
-  cutoutPercentage: 20
+  animation: {
+    animateRotate: true,
+    animateScale: true
+  }
 }
 });
 </script>

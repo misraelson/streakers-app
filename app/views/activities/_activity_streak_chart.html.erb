@@ -12,7 +12,9 @@
 var color = randomColor({
   count: <%= activity_streaks_helper(@activity.streaks) %>.length,
   luminosity: 'light',
-  hue: 'random'
+  hue: 'random',
+  format: 'rgba',
+  alpha: 0.7
 });
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -23,7 +25,7 @@ data: {
     data: <%= activity_streaks_helper(@activity.streaks) %>,
     backgroundColor: color,
     borderColor: '#5D4954',
-    borderWidth: 4,
+    borderWidth: 0.5,
     pointBackgroundColor: '#007bff'
   }]
 },
