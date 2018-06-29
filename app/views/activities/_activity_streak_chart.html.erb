@@ -9,6 +9,11 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+var color = randomColor({
+  count: <%= activity_streaks_helper(@activity.streaks) %>.length,
+  luminosity: 'light',
+  hue: 'random'
+});
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
 type: 'polarArea',
@@ -16,7 +21,7 @@ data: {
   labels: ["<%= raw @activity.title %>"],
   datasets: [{
     data: <%= activity_streaks_helper(@activity.streaks) %>,
-    backgroundColor: ['#FF5964', 'white', 'red'],
+    backgroundColor: color,
     borderColor: '#5D4954',
     borderWidth: 4,
     pointBackgroundColor: '#007bff'

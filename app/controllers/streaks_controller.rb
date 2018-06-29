@@ -46,6 +46,7 @@ class StreaksController < ApplicationController
   def update
     respond_to do |format|
       if @streak.update(streak_params)
+        @streak.current_streak += 1
         format.html { redirect_to @streak, notice: 'Streak was successfully updated.' }
         format.json { render :show, status: :ok, location: @streak }
       else
