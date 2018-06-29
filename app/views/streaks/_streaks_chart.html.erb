@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <main role="main" class="col-md-10 ml-sm-auto col-lg-12 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    </div>
+    <canvas class="my-4" id="myChart" width="600" height="380"></canvas>
+  </main>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+  <!-- Graphs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+  <script>
+  var color = randomColor({
+    // count: <%= activity_streaks_data_helper %>.length,
+    count: 9,
+    luminosity: 'light',
+    hue: 'random',
+    format: 'rgba',
+    alpha: 0.5
+  });
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+      labels: <%= streaks_title_helper(@streaks) %>,
+    datasets: [{
+      label: <%= streaks_title_helper(@streaks) %>,
+      data: <%= streaks_data_helper(@streaks) %>,
+      backgroundColor: color,
+      borderColor: '#5D4954',
+      pointBackgroundColor: '#007bff',
+      borderWidth: 0.4
+      }]
+  },
+  options: {
+    animation: {
+      animateRotate: true,
+      animateScale: true
+    },
+    cutoutPercentage: 30
+  }
+  });
+  </script>

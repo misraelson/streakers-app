@@ -6,7 +6,6 @@ class StreaksController < ApplicationController
   def index
       @streaks = current_user.streaks.all
       @activity = Activity.all
-      # @streaks.activity_id = @activity.id
   end
 
   def all_streaks_index
