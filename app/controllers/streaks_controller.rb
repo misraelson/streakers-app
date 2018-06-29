@@ -5,7 +5,7 @@ class StreaksController < ApplicationController
 
   def index
       @streaks = current_user.streaks.all
-      @activity = Activity.find(params[:activity_id])
+      @activity = Activity.all
       # @streaks.activity_id = @activity.id
   end
 
