@@ -8,6 +8,7 @@
     <tr>
       <th>Activity</th>
       <th>Current streak</th>
+      <th>Streak Status</th>
       <th>Start date</th>
       <th>End date</th>
       <th colspan="3"></th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= streak.activity.title %></td>
         <td><%= streak.current_streak %></td>
+        <td><%= streak.status.titleize %></td>
         <td><%= streak.start_date %></td>
         <td><%= streak.end_date %></td>
         <td><%= link_to 'Show', activity_streak_path(streak.activity, streak) %></td>

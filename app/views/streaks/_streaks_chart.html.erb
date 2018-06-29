@@ -18,9 +18,7 @@
     // count: <%= activity_streaks_data_helper %>.length,
     count: 9,
     luminosity: 'light',
-    hue: 'random',
-    format: 'rgba',
-    alpha: 0.5
+    hue: 'random'
   });
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
@@ -33,7 +31,7 @@
       backgroundColor: color,
       borderColor: '#5D4954',
       pointBackgroundColor: '#007bff',
-      borderWidth: 0.4
+      borderWidth: 1
       }]
   },
   options: {
