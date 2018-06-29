@@ -51,7 +51,7 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
+          <h1 class="h2">Dashboard : Recent Streaks</h1>
         </div>
         <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
       </main>
@@ -70,14 +70,19 @@
   <!-- Graphs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
   <script>
+    var color = randomColor({
+      count: <%= activity_streaks_data_helper %>.length,
+      luminosity: 'light',
+      hue: 'random'
+    });
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels: <%= activity_title_helper %>,
         datasets: [{
-          data: [15, 21, 18, 10],
-          backgroundColor: ['#FFE74C', '#FF5964', '#35A7FF', '#FFFFFF'],
+          data: <%= activity_streaks_data_helper %>,
+          backgroundColor: color,
           borderColor: '#5D4954',
           borderWidth: 4,
           pointBackgroundColor: '#007bff'

@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require rails-ujs
+//= require randomcolor
 //= require jquery-ui
 //= require activestorage
 //= require turbolinks
