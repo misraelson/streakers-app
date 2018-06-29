@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   def index
     @activities = current_user.activities.all
+    # @streak
   end
 
   # GET /activities/1

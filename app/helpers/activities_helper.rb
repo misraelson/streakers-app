@@ -8,4 +8,8 @@ module ActivitiesHelper
     return numbers
   end
 
+  # def activity_streak_update_helper(activity)
+  #   @streak = activity.streaks.find_by(status: "active")
+  # end
+
 end

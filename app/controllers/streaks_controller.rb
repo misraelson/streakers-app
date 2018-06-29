@@ -45,14 +45,12 @@ class StreaksController < ApplicationController
   # PATCH/PUT /streaks/1
   def update
     respond_to do |format|
-      if @streak.update(streak_params)
+        # @streak = streak.find(:id)
+        @activity = Activity.find(params[:activity_id])
         @streak.current_streak += 1
-        format.html { redirect_to @streak, notice: 'Streak was successfully updated.' }
+        @streak.save!
+        format.html { redirect_to activity_streak_path(@activity, @streak), notice: 'Streak was successfully updated.' }
         format.json { render :show, status: :ok, location: @streak }
-      else
-        format.html { render :edit }
-        format.json { render json: @streak.errors, status: :unprocessable_entity }
-      end
     end
   end
 
