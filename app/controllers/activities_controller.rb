@@ -23,9 +23,8 @@ class ActivitiesController < ApplicationController
 
   # POST /activities
   def create
-    u = current_user
     @activity = Activity.new(activity_params)
-    @activity.user_id = u.id
+    @activity.user_id = current_user.id
 
     respond_to do |format|
       if @activity.save

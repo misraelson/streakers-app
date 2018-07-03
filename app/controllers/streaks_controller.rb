@@ -44,7 +44,6 @@ class StreaksController < ApplicationController
   # PATCH/PUT /streaks/1
   def update
     respond_to do |format|
-        # @streak = streak.find(:id)
         @activity = Activity.find(params[:activity_id])
         @streak.current_streak += 1
         @streak.save!

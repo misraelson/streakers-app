@@ -7,6 +7,10 @@
     <tr>
       <th>Title</th>
       <th>Current Streak</th>
+      <th>Update Streak</th>
+      <th>See Streaks</th>
+      <th>Edit Activity</th>
+      <th>Delete Activity</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,13 +21,13 @@
         <td><h3><%= activity.title %></h3></td>
         <td><h3><%= activity.streaks.last.current_streak %></h3></td>
         <% if activity.streaks.last.status == "active" %>
-          <td><%= link_to 'Update Streak', activity_streak_path(activity, activity.streaks.last), method: :patch, class: "btn btn-primary btn-block" %></td>
+          <td><%= link_to '<i class="fa fa-check"></i>'.html_safe, activity_streak_path(activity, activity.streaks.last), method: :patch, class: "btn btn-primary btn-circle btn-xl" %></td>
         <% else %>
-          <td><%= link_to 'New Streak', new_activity_streak_path(activity), class: "btn btn-success btn-block" %></td>
+          <td><%= link_to 'Start New Streak', new_activity_streak_path(activity), class: "btn btn-success btn-block" %></td>
         <% end %>
-        <td><%= link_to 'Show Streaks', activity, class: "btn btn-primary btn-block" %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity), class: "btn btn-warning btn-block" %></td>
-        <td><%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block" %></td>
+        <td><%= link_to '<i class="fa fa-list"></i>'.html_safe, activity, class: "btn btn-success btn-circle btn-xl" %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity), class: "btn btn-warning btn-circle btn-xl" %></td>
+        <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-circle btn-xl" %></td>
       </tr>
     <% end %>
   </tbody>
