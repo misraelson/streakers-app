@@ -23,7 +23,7 @@ module StreakersApp
     config.load_defaults 5.2
     # Don't generate system test files.
     config.generators.system_tests = nil
-    #config time zone for active record
+    #config time zone PACIFIC for active record
     config.time_zone = 'Pacific Time (US & Canada)'
     config.active_job.queue_adapter = :sidekiq
   end

@@ -1,10 +1,10 @@
 class CheckStreakResetJob < ApplicationJob
 
   def perform
-    # find all active streaks
+    # find all active streaks 👇
     streaks = Streak.all.where(status: "active")
-    # loop through each streak and if reset value is == true (which happens on update action) then set it to false
-    # else if streak has not been reset set status = "finished"
+    # loop through each streak => if reset value is == true (which happens on update action) then flip it to false
+    # else status = "finished"
     streaks.each do |streak|
       if streak.reset?
        streak.update!(reset: "false")

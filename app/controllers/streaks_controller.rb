@@ -33,7 +33,6 @@ class StreaksController < ApplicationController
 
     respond_to do |format|
       if @streak.save
-        StreakWorker.perform_async(@streak.id)
         format.html { redirect_to activity_streak_path(@streak.activity, @streak), notice: 'Streak was successfully created.' }
         format.json { render :show, status: :created, location: @streak }
       else
