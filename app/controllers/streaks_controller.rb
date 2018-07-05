@@ -29,9 +29,11 @@ class StreaksController < ApplicationController
     @streak = Streak.new(streak_params)
     @streak.activity_id = @activity.id
     @streak.current_streak = 1
+    @streak.reset = true
 
     respond_to do |format|
       if @streak.save
+        StreakWorker.perform_async(@streak.id)
         format.html { redirect_to activity_streak_path(@streak.activity, @streak), notice: 'Streak was successfully created.' }
         format.json { render :show, status: :created, location: @streak }
       else
@@ -46,6 +48,7 @@ class StreaksController < ApplicationController
     respond_to do |format|
         @activity = Activity.find(params[:activity_id])
         @streak.current_streak += 1
+        @streak.reset = true
         @streak.save!
         format.html { redirect_to activity_streak_path(@activity, @streak), notice: 'Streak was successfully updated.' }
         format.json { render :show, status: :ok, location: @streak }
@@ -69,6 +72,6 @@ class StreaksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def streak_params
-      params.require(:streak).permit(:current_streak, :start_date, :end_date)
+      params.require(:streak).permit(:current_streak, :start_date, :end_date, :reset)
     end
 end

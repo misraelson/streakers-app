@@ -1,0 +1,5 @@
+check_streak_reset:
+  cron: "59 23 * * *"
+  class: "CheckStreakResetJob"
+  queue: default
+  active_job: true
