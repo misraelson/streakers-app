@@ -35,6 +35,7 @@ gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-cron', '~> 0.6.3'
 gem 'rufus-scheduler', '~> 3.4.0'
 gem 'sinatra', :require => nil
+gem 'fast_jsonapi'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
