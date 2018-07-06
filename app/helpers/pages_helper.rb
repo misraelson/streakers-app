@@ -1,15 +1,5 @@
 module PagesHelper
 
-  # def activity_title_helper
-  #   titles = []
-  #   binding.pry
-  #   activities = current_user.activities.order! 'updated_at ASC'
-  #   activities.each do |t|
-  #     titles << t.title
-  #   end
-  #   return raw titles
-  # end
-
   def activity_title_helper
     streaks = current_user.streaks.order! 'created_at DESC'
     activity_ids = []

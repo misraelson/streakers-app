@@ -15,8 +15,8 @@
 
   <script>
   var color = randomColor({
-    // count: <%= activity_streaks_data_helper %>.length,
-    count: 9,
+    count: <%= streaks_data_helper(@streaks) %>.length,
+    // count: 9,
     luminosity: 'light',
     hue: 'random'
   });
@@ -39,7 +39,7 @@
       animateRotate: true,
       animateScale: true
     },
-    cutoutPercentage: 30
+    cutoutPercentage: 25
   }
   });
   </script>
