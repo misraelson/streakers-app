@@ -15,6 +15,7 @@
                 Dashboard <span class="sr-only">(current)</span>
               </a>
             </li>
+            <% if current_user.activities.last.present? %>
             <li class="nav-item">
               <%= link_to '', activity_streaks_path(current_user.activity_ids) %>
               <a class="nav-link" href="/activities/:activity_id/streaks">
@@ -29,6 +30,8 @@
                 Activities
               </a>
             </li>
+            <% else %>
+            <% end %>
 
             <li class="nav-item">
               <a class="nav-link" href="#">
