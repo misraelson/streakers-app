@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+  namespace :v1 do
+    resources :sessions, only: [:create, :destroy]
+  end
+
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :activities do
     resources :streaks
