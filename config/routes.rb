@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  namespace :v1 do
+  namespace :v1, defaults: { format: :json } do
     resources :sessions, only: [:create, :destroy]
+    resources :users, only: [:create]
   end
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
