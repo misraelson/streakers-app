@@ -67,6 +67,7 @@ module V1
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def streak_params
-        params.require(:streak).permit(:current_streak, :start_date, :end_date, :reset, :status)
+        params.require(:streak).permit(:current_streak, :start_date, :end_date, :reset, :status, :activity_id)
       end
   end
+end
