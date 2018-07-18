@@ -8,9 +8,9 @@ module V1
 
     def create
       @user = User.find_by(email: params[:email])
-      # this syntax 👇 is shortform for => user && user.valid_password
+      # could👇 use shortform syntax => user&..valid_password
       if @user && @user.valid_password?(params[:password])
-        render json: @user.as_json(only: [:id, :email, :authentication_token]), status: :created
+        render :create, status: :created
       else
         head(:unauthorized)
       end

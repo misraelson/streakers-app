@@ -5,7 +5,7 @@ module V1
     def index
       @activities = current_user.activities.all
       # @streak
-      render json: @activities, status: :ok
+      render :index, status: :ok
     end
 
   end
