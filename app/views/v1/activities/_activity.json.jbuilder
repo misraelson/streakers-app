@@ -1,5 +1,6 @@
 json.call(
 activity,
 :id,
-:title
+:title,
+:user_id
 )

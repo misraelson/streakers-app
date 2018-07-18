@@ -3,6 +3,8 @@ module V1
     skip_before_action :verify_authenticity_token
 
     def show
+      # we are making a call from the client to verify token from local storage on client side is verified
+      # if current_user exists we return :ok
       current_user ? head(:ok) : head(:unauthorized)
     end
 
