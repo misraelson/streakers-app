@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :streaks, through: :activities
 
-  
+
 end
