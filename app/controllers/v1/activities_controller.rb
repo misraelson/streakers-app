@@ -1,11 +1,11 @@
 module V1
+  # Activities endpoints
   class ActivitiesController < ApplicationController
     skip_before_action :verify_authenticity_token
     # include V1::Activities::Response
 
     def index
       @activities = current_user.activities.all
-      # @streak
       render :index, status: :ok
     end
 
@@ -22,8 +22,7 @@ module V1
 
     # DELETE v1/activities/1
     def destroy
-      binding.pry
-      @activity = current_user.activities.find_by(id: params[:id])
+      @activity = current_user.activities.find(params[:id])
       if @activity.destroy
         # head is rails way of returning just content in the header => no content in the response
         head(:ok)
