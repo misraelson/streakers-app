@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   namespace :v1, defaults: { format: :json } do
-    resources :sessions, only: [:create, :destroy]
+    resource :sessions, only: [:create, :destroy]
     resources :users, only: [:create]
     resources :activities
   end
