@@ -36,7 +36,6 @@ module V1
     def activity_params
       params.require(:activity).permit(:title)
     end
-
-
+    
   end
 end
