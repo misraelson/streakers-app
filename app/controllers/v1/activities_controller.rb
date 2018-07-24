@@ -5,7 +5,7 @@ module V1
     # include V1::Activities::Response
 
     def index
-      @activities = current_user.activities.all
+      @activities = current_user.activities.all.order("created_at DESC")
       render :index, status: :ok
     end
 
@@ -36,6 +36,6 @@ module V1
     def activity_params
       params.require(:activity).permit(:title)
     end
-    
+
   end
 end
