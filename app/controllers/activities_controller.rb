@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities
   def index
-    @activities = current_user.activities.all
+    @activities = current_user.activities.all.order("created_at DESC")
     # @streak
   end
 
