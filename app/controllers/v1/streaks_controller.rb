@@ -17,8 +17,9 @@ module V1
     end
 
     def index
-      @streaks = current_user.streaks.all
+      @streaks = current_user.streaks.all.order("created_at DESC")
       @activity = Activity.all
+      render :index, status: :ok
     end
 
     def all_streaks_index

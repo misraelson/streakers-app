@@ -20,6 +20,19 @@ module V1
       end
     end
 
+    def update
+      @activity = Activity.find(params[:id])
+      @activity.user_id = current_user.id
+
+      if @activity.update_attributes(activity_params)
+        render json: { success: true, activity: @activity }
+        # render :update, status: :updated
+      else
+        render @activity.errors, status: :unprocessable_entity
+      end
+
+    end
+
     # DELETE v1/activities/1
     def destroy
       @activity = current_user.activities.find(params[:id])

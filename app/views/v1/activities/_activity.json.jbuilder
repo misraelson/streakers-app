@@ -1,6 +1,6 @@
 json.call(
-activity,
-:id,
-:title,
-:user_id
+  activity,
+  :id,
+  :title,
+  :user_id
 )
