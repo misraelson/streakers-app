@@ -19,14 +19,20 @@
     <% @activities.each do |activity| %>
       <tr>
         <td><h3><%= activity.title %></h3></td>
-        <td><h3><%= activity.streaks.last.current_streak %></h3></td>
-        <% if activity.streaks.last.status == "active" && activity.streaks.last.reset == false %>
-          <td><%= link_to '<i class="fa fa-check"></i>'.html_safe, activity_streak_path(activity, activity.streaks.last), method: :patch, class: "btn btn-primary btn-circle btn-xl" %></td>
-        <% elsif activity.streaks.last.status == "active" && activity.streaks.last.reset? %>
-          <td><h3> Streak Updated! </h3></td>
-        <% else %>
+        <% if activity.streaks.last == nil %>
+          <td><h3> No Streaks </h3></td>
           <td><%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_activity_streak_path(activity), class: "btn btn-success btn-circle btn-xl" %></td>
+        <% else %>
+          <td><h3><%= activity.streaks.last.current_streak %></h3></td>
+          <% if activity.streaks.last.status == "active" && activity.streaks.last.reset == false %>
+            <td><%= link_to '<i class="fa fa-check"></i>'.html_safe, activity_streak_path(activity, activity.streaks.last), method: :patch, class: "btn btn-primary btn-circle btn-xl" %></td>
+          <% elsif activity.streaks.last.status == "active" && activity.streaks.last.reset? %>
+            <td><h3> Streak Updated! </h3></td>
+          <% else %>
+            <td><%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_activity_streak_path(activity), class: "btn btn-success btn-circle btn-xl" %></td>
+          <% end %>
         <% end %>
+
         <td><%= link_to '<i class="fa fa-list"></i>'.html_safe, activity, class: "btn btn-success btn-circle btn-xl" %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity), class: "btn btn-warning btn-circle btn-xl" %></td>
         <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-circle btn-xl" %></td>
