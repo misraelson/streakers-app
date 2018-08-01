@@ -21,6 +21,7 @@ module V1
     def destroy
       current_user&.authentication_token = nil
       if current_user&.save
+        # when we use this :ok symbol, rails converts is to STATUS: 200
         head(:ok)
       else
         head(:unauthorized)
