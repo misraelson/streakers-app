@@ -1,28 +1,26 @@
 module V1
   # Activities endpoints
   class ActivitiesController < ApplicationController
+    include V1::Activities::Response
     skip_before_action :verify_authenticity_token
     # include V1::Activities::Response
 
     def index
-      @activities = current_user.activities.all.order("created_at DESC")
+      @activities = current_user.activities.all.order("created_at ASC")
       render :index, status: :ok
     end
 
     def create
-      @activity = Activity.new(activity_params)
-      @activity.user_id = current_user.id
+      activity = Activity.new(activity_params)
+      activity.user_id = current_user.id
 
-      if @activity.save
-        render :create, status: :created
-      else
-        render @activity.errors, status: :unprocessable_entity
-      end
+      # did some basic code refactor and created a concern module to hand the creation
+      create_and_render_activity(activity) || render_invalid_response
+
     end
 
     def update
       @activity = Activity.find(params[:id])
-      @activity.user_id = current_user.id
 
       if @activity.update_attributes(activity_params)
         render json: { success: true, activity: @activity }
