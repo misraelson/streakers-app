@@ -1,6 +1,8 @@
 module V1
   # Manages the Streak model
   class StreaksController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
     # POST /streaks
     def create
       @activity = Activity.find(params[:activity_id])
@@ -27,24 +29,14 @@ module V1
       @streaks = current_user.streaks.all
     end
 
-    def show
-    end
-
-    def new
-      @streak = Streak.new
-    end
-
-    def edit
-    end
-
 
     # PATCH/PUT /streaks/1
     def update
-      @activity = Activity.find(params[:activity_id])
+      @streak = Streak.find(params[:id])
       @streak.current_streak += 1
       @streak.reset = true
 
-      if @streak.update(streak_params)
+      if @streak.update_attributes(streak_params)
         render json: { success: true, streak: @streak }
       else
         head(:unprocessable_entity)
@@ -59,6 +51,16 @@ module V1
         head(:unprocessable_entity)
       end
     end
+    def edit
+    end
+
+    def show
+    end
+
+    def new
+      @streak = Streak.new
+    end
+
 
     private
       # Use callbacks to share common setup or constraints between actions.

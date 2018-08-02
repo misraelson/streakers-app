@@ -2,6 +2,7 @@ module V1
   # Activities endpoints
   class ActivitiesController < ApplicationController
     include V1::Activities::Response
+    skip_before_action :verify_authenticity_token
 
     def index
       @activities = current_user.activities.all.order("created_at ASC")
