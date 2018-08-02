@@ -45,7 +45,7 @@ module V1
       @streak.reset = true
 
       if @streak.update(streak_params)
-        render :update
+        render json: { success: true, streak: @streak }
       else
         head(:unprocessable_entity)
       end
