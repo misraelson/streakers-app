@@ -5,8 +5,11 @@ module V1
     skip_before_action :verify_authenticity_token
 
     def index
-      @activities = current_user.activities.all.order("created_at ASC")
-      render :index, status: :ok
+      activities = current_user.activities.all.order("created_at ASC")
+      render json: activities.to_json(include: :streaks)
+
+      # render json: { success: true, activities(include: :streaks) }
+      # render :index, status: :ok
     end
 
     def create

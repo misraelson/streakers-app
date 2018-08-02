@@ -2,6 +2,7 @@ module V1
   # Manages the Streak model
   class StreaksController < ApplicationController
     skip_before_action :verify_authenticity_token
+    before_action :set_streak, only: [:update]
 
     # POST /streaks
     def create
@@ -32,7 +33,7 @@ module V1
 
     # PATCH/PUT /streaks/1
     def update
-      @streak = Streak.find(params[:id])
+      # @streak = Streak.find(params[:id])
       @streak.current_streak += 1
       @streak.reset = true
 
