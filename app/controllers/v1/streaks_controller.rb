@@ -3,10 +3,10 @@ module V1
   class StreaksController < ApplicationController
     skip_before_action :verify_authenticity_token
     before_action :set_streak, only: [:update]
+    before_action :set_activity, only: [:create]
 
     # POST /streaks
     def create
-      @activity = Activity.find(params[:activity_id])
       @streak = Streak.new(streak_params)
       @streak.activity_id = @activity.id
       @streak.current_streak = 1
@@ -33,7 +33,6 @@ module V1
 
     # PATCH/PUT /streaks/1
     def update
-      # @streak = Streak.find(params[:id])
       @streak.current_streak += 1
       @streak.reset = true
 
@@ -52,6 +51,7 @@ module V1
         head(:unprocessable_entity)
       end
     end
+
     def edit
     end
 
@@ -69,7 +69,10 @@ module V1
         @streak = Streak.find(params[:id])
       end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
+      def set_activity
+        @activity = Activity.find(params[:activity_id])
+      end
+
       def streak_params
         params.require(:streak).permit(:current_streak, :start_date, :end_date, :reset, :status, :activity_id)
       end

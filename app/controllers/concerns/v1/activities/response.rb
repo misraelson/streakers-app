@@ -10,6 +10,10 @@ module V1
         activity.save && render(:create, status: :created, locals: { activity: activity})
       end
 
+      def render_activity(activity)
+        render(:update, status: :ok, locals: { activity: activity})
+      end
+
       def render_invalid_response
         head(:unprocessable_entity)
       end

@@ -3,30 +3,27 @@ module V1
   class ActivitiesController < ApplicationController
     include V1::Activities::Response
     skip_before_action :verify_authenticity_token
+    before_action :set_activity, only: [:update]
 
     def index
-      activities = current_user.activities.all.order("created_at ASC")
-      render json: activities.to_json(include: :streaks)
-
-      # render json: { success: true, activities(include: :streaks) }
-      # render :index, status: :ok
+      @activities = current_user.activities.all.order("created_at ASC")
+      # render json: @activities.as_json(only: [:id, :title, :user_id], include: :streaks), status: :ok
+      render :index, status: :ok
     end
 
     def create
       activity = Activity.new(activity_params)
       activity.user_id = current_user.id
-
-      # did some basic code refactor and created a concern module to hand the creation
+      # did some basic code refactor => created a concern module to hand the creation json render & error handle
       create_and_render_activity(activity) || render_invalid_response
 
     end
 
     def update
-      @activity = Activity.find(params[:id])
-
       if @activity.update_attributes(activity_params)
-        render json: { success: true, activity: @activity }
-        # render :update, status: :updated
+        # render json: @activity.to_json(only: [:id, :title, :user_id], include: :streaks)
+
+        render :update, status: :ok
       else
         render @activity.errors, status: :unprocessable_entity
       end
@@ -45,6 +42,10 @@ module V1
     end
 
     private
+
+    def set_activity
+      @activity = current_user.activities.find(params[:id])
+    end
 
     def activity_params
       params.require(:activity).permit(:title)
