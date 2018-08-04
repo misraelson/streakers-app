@@ -1,8 +1,7 @@
-json.data do
-  json.(@activity, :id, :title, :user_id)
+json.(@activity, :id, :title, :user_id)
 
-  json.streaks @activity.streaks, :id, :current_streak, :status, :reset, :activity_id
-end
+json.streaks @activity.streaks, :id, :current_streak, :status, :reset, :activity_id
+
 
 # json.data do
 #   json.@activity do
