@@ -7,10 +7,10 @@ module V1
 
     # POST /streaks
     def create
-      @streak = Streak.new(streak_params)
+      # @streak = Streak.new(streak_params)
+      @streak = Streak.new
       @streak.activity_id = @activity.id
       @streak.current_streak = 1
-      @streak.reset = true
 
       if @streak.save
         render :create, status: :created
@@ -36,8 +36,9 @@ module V1
       @streak.current_streak += 1
       @streak.reset = true
 
-      if @streak.update_attributes(streak_params)
-        render json: { success: true, streak: @streak }
+      if @streak.save
+        # render json: { success: true, streak: @streak }
+        render :update, status: :ok
       else
         head(:unprocessable_entity)
       end
@@ -74,7 +75,7 @@ module V1
       end
 
       def streak_params
-        params.require(:streak).permit(:current_streak, :start_date, :end_date, :reset, :status, :activity_id)
+        params.require(:streak).permit(:current_streak, :reset, :status, :activity_id)
       end
   end
 end

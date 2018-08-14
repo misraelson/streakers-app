@@ -71,6 +71,6 @@ class StreaksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def streak_params
-      params.require(:streak).permit(:current_streak, :start_date, :end_date, :reset)
+      params.require(:streak).permit(:start_date)
     end
 end
