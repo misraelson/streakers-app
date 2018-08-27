@@ -18,16 +18,16 @@ var color = randomColor({
 });
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-type: 'polarArea',
-data: {
-  labels: ["<%= raw @activity.title %>"],
-  datasets: [{
-    data: <%= activity_streaks_helper(@activity.streaks) %>,
-    backgroundColor: color,
-    borderColor: '#5D4954',
-    borderWidth: 0.5,
-    pointBackgroundColor: '#007bff'
-  }]
+  type: 'polarArea',
+  data: {
+    labels: ["<%= raw @activity.title %>"],
+    datasets: [{
+      data: <%= activity_streaks_helper(@activity.streaks) %>,
+      backgroundColor: color,
+      borderColor: '#5D4954',
+      borderWidth: 0.5,
+      pointBackgroundColor: '#007bff'
+    }]
 },
 options: {
   layout: {
