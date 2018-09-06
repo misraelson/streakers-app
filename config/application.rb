@@ -27,19 +27,19 @@ module StreakersApp
     config.time_zone = 'Pacific Time (US & Canada)'
 
     # REMOVE THIS LINE AFTER ALL SORTED => added this line because of error when sending data from react app
-    config.action_controller.forgery_protection_origin_check = false
+    # config.action_controller.forgery_protection_origin_check = false
 
     config.active_job.queue_adapter = :sidekiq
 
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins 'http://localhost:3000'
-        resource( '*',
-        headers: :any,
-        :methods => [:get, :patch, :post, :put, :delete, :options]
-        )
-      end
-    end
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins 'http://localhost:3000'
+    #     resource( '*',
+    #     headers: :any,
+    #     :methods => [:get, :patch, :post, :put, :delete, :options]
+    #     )
+    #   end
+    # end
 
     config.to_prepare do
       DeviseController.respond_to :html, :json
