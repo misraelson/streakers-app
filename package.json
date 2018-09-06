@@ -1,8 +1,8 @@
 {
   "name": "streakers-app",
   "engines": {
-    "node": "6.3.1",
-    "yarn": "1.6.0"
+    "node": "10.9.0",
+    "yarn": "1.9.4"
   },
   "scripts": {
     "build": "yarn --cwd react-client install && yarn --cwd react-client build && cd ..",
