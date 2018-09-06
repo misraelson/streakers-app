@@ -1,8 +1,8 @@
 check_streak_reset:
   # below code runs every day at 11:59
-  cron: "59 23 * * *"
+  # cron: "59 23 * * *"
   # below code is to run every 5 mins
-  # cron: "*/5 * * * *"
+  cron: "*/5 * * * *"
   class: "CheckStreakResetJob"
   queue: default
   active_job: true
