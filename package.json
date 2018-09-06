@@ -1,11 +1,12 @@
 {
   "name": "streakers-app",
   "engines": {
-    "node": "6.3.1"
+    "node": "6.3.1",
+    "yarn": "1.6.0"
   },
   "scripts": {
-    "build": "cd react-client && npm install && npm run build && cd ..",
-    "deploy": "cp -a client/build/. public/",
-    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+    "build": "yarn --cwd react-client install && yarn --cwd react-client build && cd ..",
+    "deploy": "cp -a react-client/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy && echo 'Client built!'"
   }
 }
