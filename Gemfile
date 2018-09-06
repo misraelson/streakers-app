@@ -39,6 +39,7 @@ gem 'sinatra', :require => nil
 gem 'fast_jsonapi'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'jwt'
+gem 'foreman'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
