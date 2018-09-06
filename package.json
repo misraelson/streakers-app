@@ -5,7 +5,7 @@
     "yarn": "1.6.0"
   },
   "scripts": {
-    "build": "yarn --cwd react-client install && yarn --cwd react-client build && cd ..",
+    "build": "yarn --cwd client install && yarn --cwd client build && cd ..",
     "deploy": "cp -a react-client/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy && echo 'Client built!'"
   }
