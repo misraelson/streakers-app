@@ -28,3 +28,6 @@
 # I don't want to show my secrets
 /config/secrets.yml
 .env
+
+# Ignore devise.rb initializer as it has secret key inside
+/config/initializers/devise.rb
