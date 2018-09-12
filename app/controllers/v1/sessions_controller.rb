@@ -1,6 +1,6 @@
 module V1
  class SessionsController < ApplicationController
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
 
     def show
       # we are making a call from the client to verify token from local storage on client side is verified

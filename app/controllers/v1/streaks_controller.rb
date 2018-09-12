@@ -1,7 +1,7 @@
 module V1
   # Manages the Streak model
   class StreaksController < ApplicationController
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
     before_action :set_streak, only: [:update]
     before_action :set_activity, only: [:create]
 

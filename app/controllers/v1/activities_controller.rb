@@ -2,7 +2,7 @@ module V1
   # Activities endpoints
   class ActivitiesController < ApplicationController
     include V1::Activities::Response
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
     before_action :set_activity, only: [:update]
 
     def index
