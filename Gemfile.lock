@@ -127,7 +127,6 @@ GEM
       method_source (~> 0.9.0)
     puma (3.11.4)
     rack (2.0.5)
-    rack-cors (0.4.1)
     rack-protection (2.0.3)
       rack
     rack-test (1.0.0)
@@ -248,7 +247,6 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 3.11)
-  rack-cors
   rails (~> 5.2.0)
   rufus-scheduler (~> 3.4.0)
   sass-rails (~> 5.0)
