@@ -14,6 +14,7 @@ module V1
       if @user && @user.valid_password?(params[:password])
         render :create, status: :created
       else
+        # when we use this :unauthorized symbol, rails converts is to STATUS: 400
         head(:unauthorized)
       end
     end
