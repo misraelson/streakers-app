@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
-  match "*unmatched_route", via: :all, to: "index.html"
+  match "*unmatched_route", via: :all, to: "pages#home"
 
   # resources :activities do
   #   resources :streaks
