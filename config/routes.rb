@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  # root to: "pages#home"
+  root to: "pages#home"
 
 
   namespace :v1, defaults: { format: :json } do
